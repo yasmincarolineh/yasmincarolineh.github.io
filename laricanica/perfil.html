@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil - Laricanica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: #121212;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #6a0dad;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: white;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+    nav a:hover {
+      color: #e0e0ff;
+    }
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      color: #bb86fc;
+    }
+    .perfil-container {
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .perfil-item {
+      margin-bottom: 15px;
+    }
+    .perfil-item label {
+      display: block;
+      margin-bottom: 5px;
+      color: #bb86fc;
+    }
+    .perfil-item input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #2c2c2c;
+      color: white;
+    }
+    .perfil-item button {
+      background-color: #6a0dad;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    .perfil-item button:hover {
+      background-color: #8e2ce2;
+    }
+    footer {
+      background-color: #6a0dad;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Laricanica</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="agendamento.html">Agendar Serviço</a></li>
+        <li><a href="sobre.html">Sobre Mim</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Seu Perfil</h1>
+    <div class="perfil-container">
+      <div class="perfil-item">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Digite seu nome completo">
+      </div>
+      <div class="perfil-item">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="Digite seu e-mail">
+      </div>
+      <div class="perfil-item">
+        <label for="telefone">Telefone</label>
+        <input type="tel" id="telefone" placeholder="(XX) XXXXX-XXXX">
+      </div>
+      <div class="perfil-item">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha">
+      </div>
+      <div class="perfil-item">
+        <button onclick="salvarPerfil()">Salvar Dados</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Laricanica - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function salvarPerfil() {
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const telefone = document.getElementById('telefone').value;
+      const senha = document.getElementById('senha').value;
+
+      alert('Dados salvos com sucesso!\n\n' +
+            'Nome: ' + nome + '\n' +
+            'E-mail: ' + email + '\n' +
+            'Telefone: ' + telefone);
+    }
+  </script>
+</body>
+</html>

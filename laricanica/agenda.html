@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agendamento de Serviços - Laricanica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-color: #121212;
+      --text-color: white;
+      --primary-color: #6a0dad;
+      --secondary-color: #1f1f1f;
+      --highlight-color: #bb86fc;
+      --card-bg: #2c2c2c;
+      --button-bg: #6a0dad;
+      --button-hover-bg: #bb86fc;
+      --button-text: white;
+    }
+
+    .light-theme {
+      --bg-color: #f5f5f5;
+      --text-color: #121212;
+      --primary-color: #6a0dad;
+      --secondary-color: #e0e0e0;
+      --highlight-color: #6a0dad;
+      --card-bg: #ffffff;
+      --button-bg: #6a0dad;
+      --button-hover-bg: #bb86fc;
+      --button-text: white;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0 15px 30px 15px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--primary-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      user-select: none;
+      border-radius: 0 0 10px 10px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .navbar .logo {
+      font-weight: 700;
+      font-size: 1.8em;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .navbar nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    .navbar nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1em;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar nav a:hover,
+    .navbar nav a:focus {
+      background-color: var(--highlight-color);
+      color: var(--bg-color);
+      outline: none;
+    }
+
+    .top-bar {
+      background-color: var(--secondary-color);
+      padding: 10px 20px;
+      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      align-items: center;
+      user-select: none;
+    }
+
+    .top-bar button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .top-bar button:hover {
+      background-color: var(--button-hover-bg);
+      color: var(--bg-color);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      user-select: none;
+    }
+
+    .form-container {
+      max-width: 500px;
+      background-color: var(--card-bg);
+      margin: 40px auto;
+      border-radius: 12px;
+      padding: 30px 25px;
+      box-shadow: 0 0 15px rgba(106, 13, 173, 0.3);
+      transition: background-color 0.3s ease;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      font-weight: 600;
+      user-select: none;
+    }
+
+    input, select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1.5px solid var(--primary-color);
+      font-size: 1em;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--highlight-color);
+      background-color: var(--card-bg);
+    }
+
+    button[type="submit"] {
+      margin-top: 15px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+
+    button[type="submit"]:hover {
+      background-color: var(--button-hover-bg);
+      color: var(--bg-color);
+    }
+
+    .success-message {
+      background-color: #4caf50;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .error-message {
+      background-color: #ff5555;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 700;
+      user-select: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <button onclick="toggleTheme()" aria-label="Alternar tema claro/escuro">🌗 Tema</button>
+  </div>
+
+  <header class="navbar" role="banner">
+    <div class="logo" tabindex="0" onclick="location.href='index.html'">Laricanica</div>
+    <nav role="navigation" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html" tabindex="0">Início</a></li>
+        <li><a href="sobre.html" tabindex="0">Sobre Mim</a></li>
+        <li><a href="contato.html" tabindex="0">Contato</a></li>
+        <li><a href="perfil.html" tabindex="0">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1>Agendamento de Serviços</h1>
+
+  <main>
+    <div class="form-container" role="main">
+      <form id="agendamentoForm" novalidate>
+        <label for="nome">Nome Completo *</label>
+        <input type="text" id="nome" name="nome" required minlength="3" placeholder="Seu nome completo" />
+
+        <label for="telefone">Telefone *</label>
+        <input type="tel" id="telefone" name="telefone" required pattern="^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$" placeholder="(99) 99999-9999" />
+
+        <label for="email">E-mail *</label>
+        <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+
+        <label for="servico">Serviço Desejado *</label>
+        <select id="servico" name="servico" required>
+          <option value="" disabled selected>Selecione um serviço</option>
+          <option value="Troca de óleo">Troca de óleo</option>
+          <option value="Revisão geral">Revisão geral</option>
+          <option value="Alinhamento e balanceamento">Alinhamento e balanceamento</option>
+          <option value="Troca de pastilhas de freio">Troca de pastilhas de freio</option>
+          <option value="Outros">Outros</option>
+        </select>
+
+        <label for="data">Data do Agendamento *</label>
+        <input type="date" id="data" name="data" required min="" />
+
+        <label for="hora">Horário *</label>
+        <input type="time" id="hora" name="hora" required min="08:00" max="18:00" />
+
+        <button type="submit">Agendar</button>
+      </form>
+
+      <div id="mensagem" role="alert" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <script>
+    const inputData = document.getElementById('data');
+    const hoje = new Date().toISOString().split('T')[0];
+    inputData.min = hoje;
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-theme');
+    }
+
+    const form = document.getElementById('agendamentoForm');
+    const mensagem = document.getElementById('mensagem');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      mensagem.textContent = '';
+      mensagem.className = '';
+
+      if (!form.checkValidity()) {
+        mensagem.textContent = 'Por favor, preencha todos os campos corretamente.';
+        mensagem.className = 'error-message';
+        form.reportValidity();
+        return;
+      }
+
+      const telefoneVal = form.telefone.value.trim();
+      const telefoneRegex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
+      if (!telefoneRegex.test(telefoneVal)) {
+        mensagem.textContent = 'Telefone inválido. Use o formato (99) 99999-9999.';
+        mensagem.className = 'error-message';
+        form.telefone.focus();
+        return;
+      }
+
+      mensagem.textContent = 'Agendamento realizado com sucesso! Entraremos em contato.';
+      mensagem.className = 'success-message';
+      form.reset();
+      inputData.min = hoje;
+    });
+  </script>
+</body>
+</html>
+

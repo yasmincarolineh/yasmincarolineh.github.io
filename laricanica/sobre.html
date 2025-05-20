@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Mim - Laricanica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: #121212;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #6a0dad;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: white;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+    nav a:hover {
+      color: #e0e0ff;
+    }
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #bb86fc;
+    }
+    .timeline li {
+      margin-bottom: 10px;
+    }
+    .galeria {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .galeria img {
+      width: 30%;
+      border-radius: 8px;
+    }
+    blockquote {
+      font-style: italic;
+      background-color: #1f1f1f;
+      padding: 15px;
+      border-left: 5px solid #6a0dad;
+      margin: 20px 0;
+    }
+    .whatsapp-btn {
+      display: inline-block;
+      background-color: #25d366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 20px 0;
+    }
+    .form-contato {
+      margin-top: 30px;
+    }
+    .form-contato input, .form-contato textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+    }
+    .form-contato button {
+      background-color: #6a0dad;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #6a0dad;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Laricanica</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="agenda.html">Agendar Serviço</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="perfil.html">perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Sobre Mim</h1>
+    <p>Olá! Sou a Laricanica, apaixonada por carros e mecânica desde 2020. Com dedicação, bom humor e muito aprendizado, transformei minha garagem em um ponto de referência no cuidado automotivo.</p>
+
+    <h2>Minha Jornada</h2>
+    <ul class="timeline">
+      <li><strong>2020:</strong> Início da oficina em casa</li>
+      <li><strong>2021:</strong> Parcerias com influenciadores</li>
+      <li><strong>2022:</strong> Lançamento da loja online</li>
+      <li><strong>2023:</strong> Estreia no YouTube com o podcast</li>
+    </ul>
+
+    <h2>Galeria</h2>
+    <div class="galeria">
+      <img src="oficina.jfif" alt="Oficina">
+      <img src="event.jfif" alt="Evento">
+      <img src="trabalho.jpg" alt="Serviço">
+    </div>
+
+    <h2>Depoimentos</h2>
+    <blockquote>"A Lari salvou meu carro no último minuto. Excelente atendimento!" – João M.</blockquote>
+    <blockquote>"Confiança total, só levo meu carro na Laricanica!" – Vanessa R.</blockquote>
+
+    <h2>Missão, Visão e Valores</h2>
+    <p><strong>Missão:</strong> Oferecer serviços mecânicos com empatia, qualidade e confiança.</p>
+    <p><strong>Visão:</strong> Ser referência nacional em atendimento automotivo personalizado.</p>
+    <p><strong>Valores:</strong> Respeito, Honestidade, Paixão e Inovação.</p>
+
+    <a href="https://wa.me/55SEUNUMERO" target="_blank" class="whatsapp-btn">Falar com a Lari</a>
+
+    <div class="form-contato">
+      <h2>Contato Rápido</h2>
+      <form>
+        <input type="text" placeholder="Seu nome" required>
+        <input type="email" placeholder="Seu e-mail" required>
+        <textarea placeholder="Sua mensagem" rows="4" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <h2>Assista ao Podcast</h2>
+    <iframe src="https://www.youtube.com/embed/1FRU1C6AD58?si=qxtqlB7SNi7fU7FH" allowfullscreen></iframe>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Laricanica - Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

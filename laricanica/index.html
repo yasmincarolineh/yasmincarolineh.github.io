@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Laricanica - Oficina Mecânica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Variáveis para temas */
+    :root {
+      --bg-color: #121212;
+      --text-color: white;
+      --primary-color: #6a0dad;
+      --secondary-color: #1f1f1f;
+      --highlight-color: #bb86fc;
+      --card-bg: #2c2c2c;
+      --button-bg: #6a0dad;
+      --button-hover-bg: #bb86fc;
+      --button-text: white;
+    }
+
+    .light-theme {
+      --bg-color: #f5f5f5;
+      --text-color: #121212;
+      --primary-color: #6a0dad;
+      --secondary-color: #e0e0e0;
+      --highlight-color: #6a0dad;
+      --card-bg: #ffffff;
+      --button-bg: #6a0dad;
+      --button-hover-bg: #bb86fc;
+      --button-text: white;
+    }
+
+    /* Reset básico */
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--button-text);
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--button-hover-bg);
+    }
+
+    .top-bar {
+      background-color: var(--secondary-color);
+      padding: 10px 20px;
+      text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .top-bar a {
+      font-weight: 500;
+    }
+
+    .top-bar button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .top-bar button:hover {
+      background-color: var(--button-hover-bg);
+      color: var(--bg-color);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--button-text);
+      user-select: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav a, nav button {
+      color: var(--button-text);
+      background: none;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover, nav button:hover {
+      color: var(--button-hover-bg);
+    }
+
+    .main-container {
+      display: flex;
+      min-height: 80vh;
+    }
+
+    .sidebar {
+      width: 20%;
+      background-color: var(--secondary-color);
+      padding: 20px;
+      border-right: 2px solid var(--primary-color);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .sidebar h3 {
+      color: var(--highlight-color);
+      font-size: 1.3em;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar ul li {
+      padding: 10px;
+      background-color: var(--card-bg);
+      margin-bottom: 10px;
+      border-radius: 8px;
+      cursor: default;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .sidebar button:hover {
+      background-color: var(--button-hover-bg);
+      color: var(--bg-color);
+    }
+
+    .content {
+      padding: 20px;
+      width: 80%;
+    }
+
+    .content h1, .content h2 {
+      user-select: none;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .product {
+      background-color: var(--card-bg);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      width: 180px;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .product img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      user-select: none;
+    }
+
+    .product button {
+      margin-top: 10px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .product button:hover {
+      background-color: var(--button-hover-bg);
+      color: var(--bg-color);
+    }
+
+    .cart {
+      display: none;
+      background-color: var(--secondary-color);
+      padding: 20px;
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      width: 300px;
+      border: 1px solid var(--primary-color);
+      border-radius: 10px;
+      z-index: 100;
+      color: var(--text-color);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .cart h2 {
+      user-select: none;
+      margin-top: 0;
+    }
+
+    .cart li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+
+    .cart .name-btn {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--primary-color);
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: default;
+      font-weight: 600;
+    }
+
+    .cart .remove-btn {
+      background-color: #ff5555;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      font-weight: 600;
+    }
+
+    .cart .close-btn {
+      margin-top: 10px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 700;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .cart .close-btn:hover {
+      background-color: var(--button-hover-bg);
+      color: var(--bg-color);
+    }
+
+    .cart .total {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 1.1em;
+      user-select: none;
+    }
+
+    /* Promoção com imagem e texto/botão separados */
+    .promo-section {
+      position: relative;
+      background-image: url('https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      margin-top: 40px;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      color: white;
+    }
+
+    .promo-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 15px;
+      z-index: 1;
+    }
+
+    .promo-text {
+      z-index: 2;
+      max-width: 50%;
+      font-size: 2em;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .promo-btn-container {
+      z-index: 2;
+    }
+
+    .promo-btn-container button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-size: 1.1em;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .promo-btn-container button:hover {
+      background-color: var(--button-hover-bg);
+      color: var(--bg-color);
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--button-text);
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    footer a {
+      color: var(--button-text);
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--button-hover-bg);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <button onclick="toggleTheme()" aria-label="Alternar tema claro/escuro">🌗 Tema</button>
+    <a href="https://www.youtube.com/@Laricanica" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://www.instagram.com/laricanica" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
+
+  <header>
+    <div class="logo">Laricanica</div>
+    <nav>
+      <ul>
+        <li><a href="agenda.html">Agendar Serviço</a></li>
+        <li><a href="sobre.html">Sobre Mim</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><button onclick="toggleCart()" aria-label="Abrir carrinho">🛒 Carrinho</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="main-container">
+    <aside class="sidebar">
+      <h3>Produtos de Carro</h3>
+      <ul>
+        <li>Óleo de motor</li>
+        <li>Filtro de ar</li>
+        <li>Pastilhas de freio</li>
+        <li>Velas de ignição</li>
+        <li>Adesivos automotivos</li>
+      </ul>
+      <button onclick="alert('Em breve novos produtos!')">Ver Todos</button>
+    </aside>
+
+    <section class="content">
+      <h1>Bem-vindo à Laricanica</h1>
+      <p>Desde 2020, nossa oficina combina paixão por carros com um atendimento diferenciado e carismático.</p>
+
+      <h2>Produtos em Destaque</h2>
+      <div class="products">
+        <div class="product">
+          <img src="p1.jpg" alt="Produto 1" />
+          <p>Óleo 5W30</p>
+          <button onclick="addToCart('Óleo 5W30', 70)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+          <img src="p2.jpg" alt="Produto 2" />
+          <p>Filtro de Ar Esportivo</p>
+          <button onclick="addToCart('Filtro de Ar Esportivo', 50)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+          <img src="p3.jpg" alt="Produto 3" />
+          <p>Velas de Ignição NGK</p>
+          <button onclick="addToCart('Velas de Ignição NGK', 90)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="product">
+          <img src="p4.jpg" alt="Produto 4" />
+          <p>Adesivo Turbo</p>
+          <button onclick="addToCart('Adesivo Turbo', 25)">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+
+      <div class="promo-section" role="region" aria-label="Super desconto da semana">
+        <div class="promo-btn-container">
+          <button onclick="alert('Confira nossos cupons na próxima página!')">Conferir Desconto</button>
+        </div>
+        <div class="promo-text">
+          Super Descontos da Semana!
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="cart" class="cart" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+    <h2 id="cartTitle">Carrinho de Compras</h2>
+    <ul id="cart-items"></ul>
+    <p class="total">Total: R$ <span id="cart-total">0.00</span></p>
+    <button class="close-btn" onclick="closeCart()">Fechar Carrinho</button>
+  </div>
+
+  <footer>
+    <a href="https://www.instagram.com/laricanica" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://www.youtube.com/@Laricanica" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://voniz.com" target="_blank" rel="noopener noreferrer">Site da Voniz</a>
+  </footer>
+
+  <script>
+    const cart = document.getElementById('cart');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    let total = 0;
+
+    function toggleCart() {
+      const isHidden = cart.getAttribute('aria-hidden') === 'true';
+      if (isHidden) {
+        cart.style.display = 'block';
+        cart.setAttribute('aria-hidden', 'false');
+      } else {
+        cart.style.display = 'none';
+        cart.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    function closeCart() {
+      cart.style.display = 'none';
+      cart.setAttribute('aria-hidden', 'true');
+    }
+
+    function addToCart(name, price) {
+      const li = document.createElement('li');
+
+      const spanName = document.createElement('span');
+      spanName.textContent = name;
+      spanName.classList.add('name-btn');
+
+      const spanPrice = document.createElement('span');
+      spanPrice.textContent = `R$ ${price.toFixed(2)}`;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = 'Remover';
+      removeBtn.classList.add('remove-btn');
+      removeBtn.onclick = () => {
+        li.remove();
+        total -= price;
+        updateTotal();
+      };
+
+      li.appendChild(spanName);
+      li.appendChild(spanPrice);
+      li.appendChild(removeBtn);
+
+      cartItems.appendChild(li);
+
+      total += price;
+      updateTotal();
+
+      if (cart.style.display !== 'block') {
+        toggleCart();
+      }
+    }
+
+    function updateTotal() {
+      cartTotal.textContent = total.toFixed(2);
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-theme');
+    }
+  </script>
+</body>
+</html>
